@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{background: black;text-align: center}
+        #c1{background: white}
+    </style>
+    <script>
+        window.onload = function () {
+            let oC = document.getElementById('c1');
+            let gd = oC.getContext('2d');//图形上下文--绘图接口
+
+            //路径操作--跟PS里面的选区一个意思，只是框定一个将要操作的范围，没用图形
+            gd.moveTo(100,100);//起点
+            gd.lineTo(300,300);
+            gd.lineTo(130,360);
+            //线条的样式在画线前定义
+            gd.strokeStyle = 'red';
+            //真正有图形
+            gd.stroke();
+
+            //填充
+            gd.fillStyle = 'rgba(255, 255, 0, 0.3)'
+            gd.fill();
+
+        };
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="600px" height="400px">
+        您的浏览器并不支持canvas，请<a href="http://chrome.google.com/">下载最新版浏览器</a>
+    </canvas>
+</body>
+</html>

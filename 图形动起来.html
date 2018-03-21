@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{background: black;text-align: center}
+        #c1{background: white}
+    </style>
+    <script>
+    /*图形动起来*/
+    /*cavas图形只要画了，是不能修改的（canvas不会保存任何图形信息，也正因为如此，它的性能才高），
+    要想修改只能擦除重新画*/
+
+        window.onload = function () {
+            let oC = document.getElementById('c1');
+            let gd = oC.getContext('2d');//图形上下文--绘图接口
+
+            let l = 50;
+
+            setInterval(function() {
+                //擦除整个画布跟擦除一小块 性能上来说是一样的，以为canvas是按次数擦书 不是按大小
+                gd.clearRect(0,0,oC.width, oC.height);
+
+                l +=5;
+
+                gd.strokeRect(l,50,100,70);
+
+            }, 16);
+
+
+
+
+        };
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="800px" height="500px">
+        您的浏览器并不支持canvas，请<a href="http://chrome.google.com/">下载最新版浏览器</a>
+    </canvas>
+</body>
+</html>

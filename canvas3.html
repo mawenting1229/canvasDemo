@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{background: black;text-align: center}
+        #c1{background: white}
+    </style>
+    <script>
+        window.onload = function () {
+            let oC = document.getElementById('c1');
+            let gd = oC.getContext('2d');//图形上下文--绘图接口
+            /*实现画线闭合*/
+
+            gd.moveTo(100,100);
+            gd.lineTo(300,300);
+            gd.lineTo(100,300);
+            //gd.lineTo(100,100);//   这样闭合是不对的，把gd.lineWidth放大就看出问题了，不是真正的闭合。
+            gd.closePath();  // 正确的 闭合路径
+
+            gd.lineWidth = 10;
+            gd.strokeStyle = 'red';
+            gd.stroke();
+
+        };
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="600px" height="400px">
+        您的浏览器并不支持canvas，请<a href="http://chrome.google.com/">下载最新版浏览器</a>
+    </canvas>
+</body>
+</html>

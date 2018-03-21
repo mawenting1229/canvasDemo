@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{background: black;text-align: center}
+        #c1{background: white}
+    </style>
+    <script>
+    /*实现用鼠标随意画线*/
+
+        window.onload = function () {
+            let oC = document.getElementById('c1');
+            let gd = oC.getContext('2d');//图形上下文--绘图接口
+
+            let lastX, lastY;
+            oC.onmousedown = function(ev) {
+                //gd.moveTo(ev.offsetX, ev.offsetY);
+                lastX = ev.offsetX;
+                lastY = ev.offsetY;
+
+                oC.onmousemove = function(ev) {
+                    gd.beginPath();
+                    gd.moveTo(lastX, lastY);
+                    gd.lineTo(ev.offsetX, ev.offsetY);
+
+                    lastX = ev.offsetX;
+                    lastY = ev.offsetY;
+
+                    gd.stroke();
+                };
+                oC.onmouseup = function() {
+                    oC.onmousemove = null;
+                    oC.onmouseup = null;
+                };
+            };
+
+
+        };
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="800px" height="500px">
+        您的浏览器并不支持canvas，请<a href="http://chrome.google.com/">下载最新版浏览器</a>
+    </canvas>
+</body>
+</html>
